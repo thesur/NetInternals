@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\..\..\..\..\manuel.fernandez\box\projects\NetInternals\Dll\Dll.vcxproj.filters" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\manuel.fernandez\box\projects\NetInternals\Dll\dllmain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\manuel.fernandez\box\projects\NetInternals\Dll\targetver.h" />
+    <ClInclude Include="..\..\..\..\..\..\manuel.fernandez\box\projects\NetInternals\Dll\stdafx.h" />
+  </ItemGroup>
+</Project>
