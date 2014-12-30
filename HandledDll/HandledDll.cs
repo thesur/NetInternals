@@ -38,8 +38,6 @@ namespace ManagedDll
             {
                 MessageBox.Show(ex.Message);
             }
-
-            //Wait();
         }
 
         public Response Hook(Hook hook)
@@ -55,15 +53,5 @@ namespace ManagedDll
                 return new Response(ResponseType.Error, "Invalid hook. Not implemented");
             }
         }
-
-        public void Wait()
-        {
-            while (true)
-            {
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(1000);
-            }
-        }
-        
     }
 }

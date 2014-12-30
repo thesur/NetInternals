@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterCom", "InterCom\InterC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandledDll", "HandledDll\HandledDll.csproj", "{19C323D9-F4CC-4A09-9373-EC1EEA2CEA96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HookUtils", "HookUtils\HookUtils.csproj", "{939AA1BC-2063-4CF6-B788-E47C35B512FC}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dll", "Dll\Dll.vcxproj", "{F451B519-69EB-44FC-8A3C-3417724D9F42}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllInjector", "DllInjector\DllInjector.csproj", "{A0D296B4-EFEB-4B6B-9544-D6394C3639E7}"
@@ -71,16 +69,6 @@ Global
 		{19C323D9-F4CC-4A09-9373-EC1EEA2CEA96}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{19C323D9-F4CC-4A09-9373-EC1EEA2CEA96}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{19C323D9-F4CC-4A09-9373-EC1EEA2CEA96}.Release|Win32.ActiveCfg = Release|Any CPU
-		{939AA1BC-2063-4CF6-B788-E47C35B512FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{939AA1BC-2063-4CF6-B788-E47C35B512FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{939AA1BC-2063-4CF6-B788-E47C35B512FC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{939AA1BC-2063-4CF6-B788-E47C35B512FC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{939AA1BC-2063-4CF6-B788-E47C35B512FC}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{939AA1BC-2063-4CF6-B788-E47C35B512FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{939AA1BC-2063-4CF6-B788-E47C35B512FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{939AA1BC-2063-4CF6-B788-E47C35B512FC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{939AA1BC-2063-4CF6-B788-E47C35B512FC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{939AA1BC-2063-4CF6-B788-E47C35B512FC}.Release|Win32.ActiveCfg = Release|Any CPU
 		{F451B519-69EB-44FC-8A3C-3417724D9F42}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{F451B519-69EB-44FC-8A3C-3417724D9F42}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
 		{F451B519-69EB-44FC-8A3C-3417724D9F42}.Debug|Mixed Platforms.Build.0 = Debug|Win32
