@@ -81,12 +81,14 @@ namespace GUI
             
             SetHTextBox(msData);
 
+            // This is crap. Have to find out other way to do this.
             modifiyng = true;
             while (modifiyng)
             {
                 System.Threading.Thread.Sleep(1);
                 System.Windows.Forms.Application.DoEvents();
             }
+
             hBox.ByteProvider.ApplyChanges();
             int len = (int) msData.Length;
             byte[] modifiedData = new byte[len];

@@ -39,7 +39,7 @@ namespace ManagedDll
                 MessageBox.Show(ex.Message);
             }
 
-            Wait();
+            //Wait();
         }
 
         public Response Hook(Hook hook)
