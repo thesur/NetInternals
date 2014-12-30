@@ -40,6 +40,11 @@ namespace ManagedDll
             }
         }
 
+        /// <summary>
+        /// This method is called by the intercom when the process wants the hooked process to hook any API
+        /// </summary>
+        /// <param name="hook"></param>
+        /// <returns></returns>
         public Response Hook(Hook hook)
         {
             if (LowLevelHooksManager.AddHook(hook))

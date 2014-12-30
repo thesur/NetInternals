@@ -22,7 +22,6 @@ namespace InterCom
             clientHost = new ServiceHost(serverToClient);
             clientHost.AddServiceEndpoint((typeof(IFromServerToClient)), new NetNamedPipeBinding(), "net.pipe://localhost/Client");
             factory = new ChannelFactory<IFromClientToServer>(new NetNamedPipeBinding(), new EndpointAddress("net.pipe://localhost/Server"));
-            //factory = new DuplexChannelFactory<IFromClientToServer>(new InstanceContext(this), new NetNamedPipeBinding(), new EndpointAddress("net.pipe://localhost/Server"));
             channel = factory.CreateChannel();
 
         }

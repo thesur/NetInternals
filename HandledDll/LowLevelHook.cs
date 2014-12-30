@@ -23,9 +23,6 @@ namespace HandledDll
             this.PrologueBytesToCopy = prologueLength;
             pModule = WinApi.WinApi.GetModuleHandle(hook.Module);
             pFunction = WinApi.WinApi.GetProcAddress(pModule, hook.Function);
-
-            //ManagedDll.ManagedDll.InterComClient.Log("Module addr: " + pModule.ToString());
-            //ManagedDll.ManagedDll.InterComClient.Log("Function addr: " + pFunction.ToString());
         }
 
         /// <summary>
@@ -39,9 +36,8 @@ namespace HandledDll
             IntPtr jmp = IntPtr.Zero;
             IntPtr bytes = IntPtr.Zero;
 
-            //uint PrologueBytesToCopy = 5;
             jmp = ClonePrologue(pHandle, pFunction, PrologueBytesToCopy); // bytesToCopy are the number of bytes of the prologue of the function to copy
-            ManagedDll.ManagedDll.InterComClient.Log("Jmp to " + jmp.ToString());
+
             // To do:
             // Calculate the opcodes of the prolog of the API, so we make sure that
             // the JMP is done as an instruction and isn't set in the middle of a opcode.
@@ -65,6 +61,13 @@ namespace HandledDll
 
         }
 
+        /// <summary>
+        /// Clones the prologue of the API into another memory position. 
+        /// </summary>
+        /// <param name="processHandle">process handle</param>
+        /// <param name="pFunction">position where the original function is located</param>
+        /// <param name="nBytes">number of bytes to copy</param>
+        /// <returns>Returns the memory address where the cloned code is located</returns>
         private IntPtr ClonePrologue(IntPtr processHandle, IntPtr pFunction, uint nBytes)
         {
             byte[] asm = new byte[nBytes + 5];

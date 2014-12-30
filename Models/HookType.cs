@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+    /// <summary>
+    /// Type of hook. After (precall), or before (postcall) making the real call.
+    /// </summary>
     public enum HookType
     {
         PreCall,

@@ -9,19 +9,5 @@ namespace InterCom
 {
     public class WCF
     {
-        //internal void CloseChannel(ICommunicationObject channel)
-        //{
-        //    try
-        //    {
-        //        channel.Close();
-        //    }
-        //    catch
-        //    {
-        //    }
-        //    finally
-        //    {
-        //        channel.Abort();
-        //    }
-        //}
     }
 }
