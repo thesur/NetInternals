@@ -36,8 +36,19 @@ namespace NetInternals
             byte[] buffer = new byte[len];
             IntPtr bytesReaded = IntPtr.Zero;
 
-            WinApi.WinApi.ReadProcessMemory(ProcessHandle, address, buffer, (uint) len, out bytesReaded);
+            WinApi.WinApi.ReadProcessMemory(ProcessHandle, address, buffer, (uint)len, out bytesReaded);
             return buffer;
+        }
+
+        public void WriteMemory(IntPtr address, byte[] data)
+        {
+            IntPtr bytesWritten = IntPtr.Zero;
+            WinApi.WinApi.WriteProcessMemory(ProcessHandle, address, data, data.Length, out bytesWritten);
+        }
+
+        public void WriteMemory(IntPtr address, string ascii)
+        {
+            WriteMemory(address, ASCIIEncoding.ASCII.GetBytes(ascii));
         }
     }
 

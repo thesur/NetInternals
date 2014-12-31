@@ -21,7 +21,7 @@ namespace HandledDll
         internal bool AddHook(Hook hook)
         {
             LowLevelHook llHook;
-            ManagedDll.ManagedDll.InterComClient.Log(hook.Module + " " + hook.Function);
+
             if (hook.Module == "WS2_32" && hook.Function == "send")
                 llHook = new APIs.WS2_32.Send(hook);
             else if (hook.Module == "WS2_32" && hook.Function == "recv")

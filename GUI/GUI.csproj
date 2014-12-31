@@ -54,6 +54,12 @@
     <Compile Include="AttachForm.Designer.cs">
       <DependentUpon>AttachForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorForm.Designer.cs">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AttachForm.resx">
       <DependentUpon>AttachForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -76,6 +85,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -103,6 +113,132 @@
       <Project>{ed510591-42ac-4992-b37c-304ec5fe270e}</Project>
       <Name>NetInternals</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\address19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black403.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black406.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black407.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book209.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\broken45.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculator70.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar159.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete82.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\done.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down123.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file99.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hanging15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart295.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home150.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link61.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\locked59.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\music235.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\musical116.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new104.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\old63.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print42.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print43.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\puzzle38.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh57.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\return10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\returning7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right245.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\round60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\round61.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\round62.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\share40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\square182.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlocked44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up177.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom70.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

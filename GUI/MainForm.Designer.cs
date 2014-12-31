@@ -37,7 +37,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attachToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPageInterception = new System.Windows.Forms.TabControl();
+            this.tabMain = new System.Windows.Forms.TabPage();
+            this.lbCallInfo = new System.Windows.Forms.Label();
+            this.tabPageHooks = new System.Windows.Forms.TabPage();
+            this.btIntercepting = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            this.tabPageInterception.SuspendLayout();
+            this.tabMain.SuspendLayout();
+            this.tabPageHooks.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbLog
@@ -55,7 +63,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(2, 27);
+            this.button1.Location = new System.Drawing.Point(32, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 26);
             this.button1.TabIndex = 2;
@@ -66,7 +74,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(2, 54);
+            this.button2.Location = new System.Drawing.Point(32, 60);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 26);
             this.button2.TabIndex = 3;
@@ -82,10 +90,10 @@
             this.hBox.BackColor = System.Drawing.Color.Black;
             this.hBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.hBox.ForeColor = System.Drawing.Color.Green;
-            this.hBox.Location = new System.Drawing.Point(2, 86);
+            this.hBox.Location = new System.Drawing.Point(8, 38);
             this.hBox.Name = "hBox";
             this.hBox.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hBox.Size = new System.Drawing.Size(721, 157);
+            this.hBox.Size = new System.Drawing.Size(701, 151);
             this.hBox.StringViewVisible = true;
             this.hBox.TabIndex = 4;
             // 
@@ -103,9 +111,9 @@
             // btForward
             // 
             this.btForward.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btForward.Location = new System.Drawing.Point(643, 27);
+            this.btForward.Location = new System.Drawing.Point(610, 6);
             this.btForward.Name = "btForward";
-            this.btForward.Size = new System.Drawing.Size(80, 53);
+            this.btForward.Size = new System.Drawing.Size(99, 26);
             this.btForward.TabIndex = 6;
             this.btForward.Text = "Forward";
             this.btForward.UseVisualStyleBackColor = true;
@@ -138,17 +146,74 @@
             this.attachToolStripMenuItem.Text = "&Attach";
             this.attachToolStripMenuItem.Click += new System.EventHandler(this.attachToolStripMenuItem_Click);
             // 
+            // tabPageInterception
+            // 
+            this.tabPageInterception.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabPageInterception.Controls.Add(this.tabMain);
+            this.tabPageInterception.Controls.Add(this.tabPageHooks);
+            this.tabPageInterception.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageInterception.Location = new System.Drawing.Point(0, 25);
+            this.tabPageInterception.Name = "tabPageInterception";
+            this.tabPageInterception.SelectedIndex = 0;
+            this.tabPageInterception.Size = new System.Drawing.Size(726, 226);
+            this.tabPageInterception.TabIndex = 8;
+            // 
+            // tabMain
+            // 
+            this.tabMain.Controls.Add(this.btIntercepting);
+            this.tabMain.Controls.Add(this.lbCallInfo);
+            this.tabMain.Controls.Add(this.hBox);
+            this.tabMain.Controls.Add(this.btForward);
+            this.tabMain.Location = new System.Drawing.Point(4, 22);
+            this.tabMain.Name = "tabMain";
+            this.tabMain.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMain.Size = new System.Drawing.Size(718, 200);
+            this.tabMain.TabIndex = 0;
+            this.tabMain.Text = "Interceptipon";
+            this.tabMain.UseVisualStyleBackColor = true;
+            this.tabMain.Click += new System.EventHandler(this.tabMain_Click);
+            // 
+            // lbCallInfo
+            // 
+            this.lbCallInfo.AutoSize = true;
+            this.lbCallInfo.Location = new System.Drawing.Point(8, 13);
+            this.lbCallInfo.Name = "lbCallInfo";
+            this.lbCallInfo.Size = new System.Drawing.Size(67, 13);
+            this.lbCallInfo.TabIndex = 7;
+            this.lbCallInfo.Text = "{CallInfo}";
+            // 
+            // tabPageHooks
+            // 
+            this.tabPageHooks.Controls.Add(this.button1);
+            this.tabPageHooks.Controls.Add(this.button2);
+            this.tabPageHooks.Location = new System.Drawing.Point(4, 22);
+            this.tabPageHooks.Name = "tabPageHooks";
+            this.tabPageHooks.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageHooks.Size = new System.Drawing.Size(718, 200);
+            this.tabPageHooks.TabIndex = 1;
+            this.tabPageHooks.Text = "Hooks";
+            this.tabPageHooks.UseVisualStyleBackColor = true;
+            // 
+            // btIntercepting
+            // 
+            this.btIntercepting.Location = new System.Drawing.Point(467, 6);
+            this.btIntercepting.Name = "btIntercepting";
+            this.btIntercepting.Size = new System.Drawing.Size(137, 26);
+            this.btIntercepting.TabIndex = 8;
+            this.btIntercepting.Text = "Interception is {status}";
+            this.btIntercepting.UseVisualStyleBackColor = true;
+            this.btIntercepting.Click += new System.EventHandler(this.btIntercepting_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 365);
-            this.Controls.Add(this.btForward);
+            this.Controls.Add(this.tabPageInterception);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbLog);
-            this.Controls.Add(this.hBox);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -156,6 +221,10 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabPageInterception.ResumeLayout(false);
+            this.tabMain.ResumeLayout(false);
+            this.tabMain.PerformLayout();
+            this.tabPageHooks.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,6 +241,11 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem attachToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabPageInterception;
+        private System.Windows.Forms.TabPage tabMain;
+        private System.Windows.Forms.TabPage tabPageHooks;
+        private System.Windows.Forms.Label lbCallInfo;
+        private System.Windows.Forms.Button btIntercepting;
     }
 }
 

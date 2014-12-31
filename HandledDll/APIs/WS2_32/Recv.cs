@@ -64,7 +64,7 @@ namespace HandledDll.APIs.WS2_32
                 hCall.Arguments.Add(len);
                 hCall.Arguments.Add(flags);
                 hCall.ReturnedValue = originalReturnedValue;
-                ManagedDll.ManagedDll.InterComClient.Log(originalReturnedValue.ToString());
+
                 try
                 {
                     ManagedDll.ManagedDll.InterComClient.HookedCall(ref hCall);

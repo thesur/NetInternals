@@ -31,8 +31,6 @@ namespace HandledDll
         /// <returns>Returns the memory address that is just after the inline hook. This is the address where the managed code has to jump after processing the hook</returns>
         protected IntPtr Enable(IntPtr pHandle, Delegate callBack)
         {
-            ManagedDll.ManagedDll.InterComClient.Log("Enabling (pHandle: " + pHandle.ToString() + ")");
-
             IntPtr jmp = IntPtr.Zero;
             IntPtr bytes = IntPtr.Zero;
 

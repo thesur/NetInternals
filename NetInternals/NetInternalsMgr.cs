@@ -22,6 +22,10 @@ namespace NetInternals
         public NetInternalsMgr()
         {
             interComServer = new InterCom.Server(this);
+            Response r = interComServer.Listen();
+            if (r.Type == ResponseType.Error)
+                throw new Exception(r.Message);
+
             RemoteProcess = null;
         }
 
@@ -33,8 +37,6 @@ namespace NetInternals
         {
             pHandle = WinApi.WinApi.OpenProcess(WinApi.WinApi.ProcessAccessFlags.All, false, process.Pid);
             RemoteProcess = new RemoteProcess(pHandle, process.Pid);
-
-            interComServer.Listen();
             DllInjector.DllInjector.InjectByPid(this.RemoteProcess.Pid, UNMANAGED_DLL);
         }
 

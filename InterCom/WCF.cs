@@ -9,5 +9,7 @@ namespace InterCom
 {
     public class WCF
     {
+        protected string PipeServerName = "net.pipe://localhost/Server";
+        protected string PipeClientName = "net.pipe://localhost/Client";
     }
 }
