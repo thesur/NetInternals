@@ -24,16 +24,18 @@ namespace GUI.Controls
 
         }
 
-        public void AddArgument(DataType type, string name, object value)
+        internal void AddArgument(Argument argument)
         {
             DataGridViewRow row = new DataGridViewRow();
+            row.Tag = argument;
+
             DataGridViewTextBoxCell cellType = new DataGridViewTextBoxCell();
             DataGridViewTextBoxCell cellName = new DataGridViewTextBoxCell();
             DataGridViewTextBoxCell cellValue = new DataGridViewTextBoxCell();
-
-            cellType.Value = type;
-            cellName.Value = name;
-            cellValue.Value = value;
+            
+            cellType.Value = argument.Type;
+            cellName.Value = argument.Name;
+            cellValue.Value = argument.ToString() ;
 
             row.Cells.Add(cellType);
             row.Cells.Add(cellName);

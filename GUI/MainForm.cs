@@ -20,7 +20,7 @@ namespace GUI
 {
     public partial class MainForm : Form
     {
-        NetInternalsMgr internalsMgr;
+        
 
         bool modifiyng = false;
         bool intercepting = false;
@@ -29,7 +29,7 @@ namespace GUI
         {
             try
             {
-                internalsMgr = new NetInternalsMgr();
+                Program.internalsMgr = new NetInternalsMgr();
             }
             catch (Exception ex)
             {
@@ -38,21 +38,37 @@ namespace GUI
                 this.Close();
             }
 
-            internalsMgr.OnNewLog += internalsMgr_OnNewLog;
-            internalsMgr.OnHookedCall += internalsMgr_OnHookedCall;
+            Program.internalsMgr.OnNewLog += internalsMgr_OnNewLog;
+            Program.internalsMgr.OnHookedCall += internalsMgr_OnHookedCall;
             InitializeComponent();
         }
 
         private void ProcessSend(HookedCall hc)
         {
-           // IntPtr address = new IntPtr((int)hc.Arguments[1]);
-            //int len = Convert.ToInt32(hc.Arguments[2]);
-            //byte[] modifiedData = InterceptData(internalsMgr.RemoteProcess.ReadMemory(address, len), hc);
+            editor.AddArgument(new Argument(DataType.Int16, "Socket", hc.Arguments[0]));
+            editor.AddArgument(new Argument(DataType.Pointer, "Buffer", hc.Arguments[1]));
+            editor.AddArgument(new Argument(DataType.Int16, "Length", hc.Arguments[2]));
+            editor.AddArgument(new Argument(DataType.Int16, "Flags", hc.Arguments[3]));
+        }
+
+        private void ProcessRecv(HookedCall hc)
+        {
+            editor.AddArgument(new Argument(DataType.Int16, "Socket", hc.Arguments[0]));
+            editor.AddArgument(new Argument(DataType.Pointer, "Buffer", hc.Arguments[1]));
+            editor.AddArgument(new Argument(DataType.Int16, "Length", hc.Arguments[2]));
+            editor.AddArgument(new Argument(DataType.Int16, "Flags", hc.Arguments[3]));
+        }
+
+        void internalsMgr_OnHookedCall(HookedCall hc)
+        {
+            if (!intercepting)
+                return;
             editor.Clear();
-            editor.AddArgument(DataType.Int16, "Socket", hc.Arguments[0]);
-            editor.AddArgument(DataType.Pointer, "Buffer", hc.Arguments[1]);
-            editor.AddArgument(DataType.Int16, "Length", hc.Arguments[2]);
-            editor.AddArgument(DataType.Int16, "Flags", hc.Arguments[3]);
+
+            if (hc.Hook.Function == "send")
+                ProcessSend(hc);
+            else if (hc.Hook.Function == "recv")
+                ProcessRecv(hc);
 
             lbCallInfo.Text = string.Format("{0}!{1} ({2})", hc.Hook.Module, hc.Hook.Function, hc.Hook.Type.ToString());
             modifiyng = true;
@@ -63,23 +79,6 @@ namespace GUI
             }
             lbCallInfo.Text = string.Empty;
             editor.Clear();
-        }
-
-        private void ProcessRecv(HookedCall hc)
-        {
-            //IntPtr address = new IntPtr((int)hc.Arguments[1]);
-            //byte[] modifiedData = InterceptData(internalsMgr.RemoteProcess.ReadMemory(address, (Int16)hc.ReturnedValue), hc);
-        }
-
-        void internalsMgr_OnHookedCall(HookedCall hc)
-        {
-            if (!intercepting)
-                return;
-
-            if (hc.Hook.Function == "send")
-                ProcessSend(hc);
-            else if (hc.Hook.Function == "recv")
-                ProcessRecv(hc);
         }
 
         void internalsMgr_OnNewLog(string message)
@@ -114,56 +113,17 @@ namespace GUI
             }
         }
 
-        private void SetHTextBox(MemoryStream msData)
-        {
-            DynamicFileByteProvider dynamicFileByteProvider = new DynamicFileByteProvider(msData);
-            hBox.ByteProvider = dynamicFileByteProvider;
-        }
-
-        private byte[] InterceptData(byte[] data, HookedCall hCall)
-        {
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //
-            // This is crap. Have to find out other way to do this.
-            //
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-            MemoryStream msData = new MemoryStream(data);
-            
-            SetHTextBox(msData);
-            lbCallInfo.Text = string.Format("{0}!{1} ({2})", hCall.Hook.Module, hCall.Hook.Function, hCall.Hook.Type.ToString());
-            
-            modifiyng = true;
-            while (modifiyng)
-            {
-                System.Threading.Thread.Sleep(1);
-                System.Windows.Forms.Application.DoEvents();
-            }
-            lbCallInfo.Text = string.Empty;
-            hBox.ByteProvider.ApplyChanges();
-            int len = (int) msData.Length;
-            byte[] modifiedData = new byte[len];
-            msData.Seek(0, SeekOrigin.Begin);
-            msData.Read(modifiedData, 0, len);
-            msData.Close();
-            hBox.ByteProvider.DeleteBytes(0, len);
-            hBox.Refresh();
-            IntPtr address = new IntPtr(int.Parse(hCall.Arguments[1].ToString()));
-            internalsMgr.RemoteProcess.WriteMemory(address, modifiedData);
-            return modifiedData;
-        }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
             Hook hook = new Hook("WS2_32", "send", HookType.PreCall);
-            Response r = internalsMgr.Hook(hook);
+            Response r = Program.internalsMgr.Hook(hook);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Hook hook = new Hook("WS2_32", "recv", HookType.PostCall);
-            Response r = internalsMgr.Hook(hook);
+            Response r = Program.internalsMgr.Hook(hook);
         }
 
         private void btForward_Click(object sender, EventArgs e)
@@ -179,7 +139,7 @@ namespace GUI
             if (fAttach.SelectedProcess != null)
             {
                 AddLocalLog(string.Format("PING! - Attaching to {0} (Pid: {1})", fAttach.SelectedProcess.Name, fAttach.SelectedProcess.Pid));
-                internalsMgr.Inject(fAttach.SelectedProcess);
+                Program.internalsMgr.Inject(fAttach.SelectedProcess);
             }
         }
 

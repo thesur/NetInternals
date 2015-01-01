@@ -23,6 +23,7 @@ namespace GUI
         {
             hexEditorForm = new HexEditorForm();
             hexEditorForm.ShowDialog();
+            this.Close();
         }
 
         private void btCancel_Click(object sender, EventArgs e)

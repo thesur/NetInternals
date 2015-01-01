@@ -54,6 +54,7 @@
     <Compile Include="AttachForm.Designer.cs">
       <DependentUpon>AttachForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Argument.cs" />
     <Compile Include="Controls\DataType.cs" />
     <Compile Include="Controls\Editor.cs">
       <SubType>UserControl</SubType>

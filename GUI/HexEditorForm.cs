@@ -16,5 +16,10 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void HexEditorForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

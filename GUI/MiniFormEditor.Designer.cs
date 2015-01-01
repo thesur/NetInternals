@@ -77,6 +77,7 @@
             this.Controls.Add(this.btEdit);
             this.ForeColor = System.Drawing.Color.Coral;
             this.Name = "MiniFormEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.MiniFormEditor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

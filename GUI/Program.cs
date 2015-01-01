@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetInternals;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ namespace GUI
 {
     static class Program
     {
+        public static NetInternalsMgr internalsMgr;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

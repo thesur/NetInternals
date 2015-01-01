@@ -39,16 +39,21 @@
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToResizeRows = false;
             this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.BackgroundColor = System.Drawing.SystemColors.ControlDark;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ParamName,
             this.ParamType,
             this.ParamValue});
+            this.dgv.GridColor = System.Drawing.SystemColors.Control;
             this.dgv.Location = new System.Drawing.Point(18, 16);
+            this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
+            this.dgv.RowHeadersVisible = false;
             this.dgv.Size = new System.Drawing.Size(457, 184);
             this.dgv.TabIndex = 0;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
@@ -56,20 +61,26 @@
             // 
             // ParamName
             // 
+            this.ParamName.FillWeight = 50F;
             this.ParamName.HeaderText = "Name";
             this.ParamName.Name = "ParamName";
             this.ParamName.ReadOnly = true;
+            this.ParamName.Width = 90;
             // 
             // ParamType
             // 
+            this.ParamType.FillWeight = 50F;
             this.ParamType.HeaderText = "Type";
             this.ParamType.Name = "ParamType";
             this.ParamType.ReadOnly = true;
+            this.ParamType.Width = 90;
             // 
             // ParamValue
             // 
+            this.ParamValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ParamValue.HeaderText = "Value";
             this.ParamValue.Name = "ParamValue";
+            this.ParamValue.ReadOnly = true;
             // 
             // Editor
             // 
