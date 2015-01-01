@@ -12,7 +12,7 @@ namespace GUI.Controls
 {
     public partial class Editor : UserControl
     {
-        private MiniFormEditor miniEditor = new MiniFormEditor();
+        private MiniFormEditor miniEditor;
 
         public Editor()
         {
@@ -53,12 +53,20 @@ namespace GUI.Controls
         {
             if (((DataType)dgv.Rows[e.RowIndex].Cells[0].Value) == DataType.Pointer)
             {
-                miniEditor = new MiniFormEditor();
+                miniEditor = new MiniFormEditor(new IntPtr((int)((Argument)dgv.Rows[e.RowIndex].Tag).Value));
                 miniEditor.StartPosition = FormStartPosition.CenterScreen;
-                miniEditor.Show();
+                miniEditor.ShowDialog();
+
+                if (miniEditor.data != null)
+                {
+                    dgv.Rows[e.RowIndex].Cells[2].Value = "MODIFICADO";
+                }
             }
             else
-                miniEditor.Close();
+            {
+                if (miniEditor != null)
+                    miniEditor.Close();
+            }
         }
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)

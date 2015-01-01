@@ -13,16 +13,23 @@ namespace GUI
     public partial class MiniFormEditor : Form
     {
         HexEditorForm hexEditorForm;
+        IntPtr address;
+        int bytesToRead = 200;
+        internal byte[] data;
 
-        public MiniFormEditor()
+        public MiniFormEditor(IntPtr address)
         {
+            this.address = address;
             InitializeComponent();
         }
 
         private void btEdit_Click(object sender, EventArgs e)
         {
-            hexEditorForm = new HexEditorForm();
+            hexEditorForm = new HexEditorForm(address, bytesToRead);
             hexEditorForm.ShowDialog();
+
+            if (hexEditorForm.modified)
+                this.data = hexEditorForm.data;
             this.Close();
         }
 

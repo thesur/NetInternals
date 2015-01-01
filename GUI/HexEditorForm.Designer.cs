@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HexEditorForm));
-            this.hexBox1 = new Be.Windows.Forms.HexBox();
+            this.hBox = new Be.Windows.Forms.HexBox();
             this.lbNote = new System.Windows.Forms.Label();
             this.btModify = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
@@ -38,14 +38,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
-            // hexBox1
+            // hBox
             // 
-            this.hexBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.hexBox1.Location = new System.Drawing.Point(12, 72);
-            this.hexBox1.Name = "hexBox1";
-            this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBox1.Size = new System.Drawing.Size(718, 254);
-            this.hexBox1.TabIndex = 0;
+            this.hBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hBox.LineInfoVisible = true;
+            this.hBox.Location = new System.Drawing.Point(12, 72);
+            this.hBox.Name = "hBox";
+            this.hBox.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.hBox.Size = new System.Drawing.Size(718, 254);
+            this.hBox.StringViewVisible = true;
+            this.hBox.TabIndex = 0;
             // 
             // lbNote
             // 
@@ -66,6 +68,7 @@
             this.btModify.TabIndex = 2;
             this.btModify.Text = "Modify";
             this.btModify.UseVisualStyleBackColor = true;
+            this.btModify.Click += new System.EventHandler(this.btModify_Click);
             // 
             // btCancel
             // 
@@ -76,6 +79,7 @@
             this.btCancel.TabIndex = 3;
             this.btCancel.Text = "Cancel";
             this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // numericUpDown1
             // 
@@ -105,7 +109,7 @@
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btModify);
             this.Controls.Add(this.lbNote);
-            this.Controls.Add(this.hexBox1);
+            this.Controls.Add(this.hBox);
             this.Name = "HexEditorForm";
             this.Text = "Hex editor";
             this.Load += new System.EventHandler(this.HexEditorForm_Load);
@@ -117,7 +121,7 @@
 
         #endregion
 
-        private Be.Windows.Forms.HexBox hexBox1;
+        private Be.Windows.Forms.HexBox hBox;
         private System.Windows.Forms.Label lbNote;
         private System.Windows.Forms.Button btModify;
         private System.Windows.Forms.Button btCancel;

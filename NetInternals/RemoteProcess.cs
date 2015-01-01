@@ -50,6 +50,11 @@ namespace NetInternals
         {
             WriteMemory(address, ASCIIEncoding.ASCII.GetBytes(ascii));
         }
+
+        public IntPtr VirtualAllocEx(uint len)
+        {
+            return WinApi.WinApi.VirtualAllocEx(ProcessHandle, IntPtr.Zero, len, WinApi.WinApi.AllocationType.Commit | WinApi.WinApi.AllocationType.Reserve, WinApi.WinApi.MemoryProtection.ReadWrite);
+        }
     }
 
 }
