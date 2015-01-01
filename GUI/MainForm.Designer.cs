@@ -39,9 +39,10 @@
             this.attachToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageInterception = new System.Windows.Forms.TabControl();
             this.tabMain = new System.Windows.Forms.TabPage();
+            this.btIntercepting = new System.Windows.Forms.Button();
             this.lbCallInfo = new System.Windows.Forms.Label();
             this.tabPageHooks = new System.Windows.Forms.TabPage();
-            this.btIntercepting = new System.Windows.Forms.Button();
+            this.editor = new GUI.Controls.Editor();
             this.menuStrip1.SuspendLayout();
             this.tabPageInterception.SuspendLayout();
             this.tabMain.SuspendLayout();
@@ -90,7 +91,7 @@
             this.hBox.BackColor = System.Drawing.Color.Black;
             this.hBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.hBox.ForeColor = System.Drawing.Color.Green;
-            this.hBox.Location = new System.Drawing.Point(8, 38);
+            this.hBox.Location = new System.Drawing.Point(-21, 43);
             this.hBox.Name = "hBox";
             this.hBox.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
             this.hBox.Size = new System.Drawing.Size(701, 151);
@@ -162,6 +163,7 @@
             // 
             // tabMain
             // 
+            this.tabMain.Controls.Add(this.editor);
             this.tabMain.Controls.Add(this.btIntercepting);
             this.tabMain.Controls.Add(this.lbCallInfo);
             this.tabMain.Controls.Add(this.hBox);
@@ -174,6 +176,16 @@
             this.tabMain.Text = "Interceptipon";
             this.tabMain.UseVisualStyleBackColor = true;
             this.tabMain.Click += new System.EventHandler(this.tabMain_Click);
+            // 
+            // btIntercepting
+            // 
+            this.btIntercepting.Location = new System.Drawing.Point(467, 6);
+            this.btIntercepting.Name = "btIntercepting";
+            this.btIntercepting.Size = new System.Drawing.Size(137, 26);
+            this.btIntercepting.TabIndex = 8;
+            this.btIntercepting.Text = "Interception is {status}";
+            this.btIntercepting.UseVisualStyleBackColor = true;
+            this.btIntercepting.Click += new System.EventHandler(this.btIntercepting_Click);
             // 
             // lbCallInfo
             // 
@@ -196,15 +208,15 @@
             this.tabPageHooks.Text = "Hooks";
             this.tabPageHooks.UseVisualStyleBackColor = true;
             // 
-            // btIntercepting
+            // editor
             // 
-            this.btIntercepting.Location = new System.Drawing.Point(467, 6);
-            this.btIntercepting.Name = "btIntercepting";
-            this.btIntercepting.Size = new System.Drawing.Size(137, 26);
-            this.btIntercepting.TabIndex = 8;
-            this.btIntercepting.Text = "Interception is {status}";
-            this.btIntercepting.UseVisualStyleBackColor = true;
-            this.btIntercepting.Click += new System.EventHandler(this.btIntercepting_Click);
+            this.editor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.editor.Location = new System.Drawing.Point(0, 43);
+            this.editor.Name = "editor";
+            this.editor.Size = new System.Drawing.Size(712, 154);
+            this.editor.TabIndex = 9;
             // 
             // MainForm
             // 
@@ -246,6 +258,7 @@
         private System.Windows.Forms.TabPage tabPageHooks;
         private System.Windows.Forms.Label lbCallInfo;
         private System.Windows.Forms.Button btIntercepting;
+        private Controls.Editor editor;
     }
 }
 

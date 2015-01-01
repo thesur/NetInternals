@@ -1,4 +1,5 @@
 ﻿using Be.Windows.Forms;
+using GUI.Controls;
 using InterCom.Interfaces;
 using Models;
 using NetInternals;
@@ -44,15 +45,30 @@ namespace GUI
 
         private void ProcessSend(HookedCall hc)
         {
-            IntPtr address = new IntPtr((int)hc.Arguments[1]);
-            int len = Convert.ToInt32(hc.Arguments[2]);
-            byte[] modifiedData = InterceptData(internalsMgr.RemoteProcess.ReadMemory(address, len), hc);
+           // IntPtr address = new IntPtr((int)hc.Arguments[1]);
+            //int len = Convert.ToInt32(hc.Arguments[2]);
+            //byte[] modifiedData = InterceptData(internalsMgr.RemoteProcess.ReadMemory(address, len), hc);
+            editor.Clear();
+            editor.AddArgument(DataType.Int16, "Socket", hc.Arguments[0]);
+            editor.AddArgument(DataType.Pointer, "Buffer", hc.Arguments[1]);
+            editor.AddArgument(DataType.Int16, "Length", hc.Arguments[2]);
+            editor.AddArgument(DataType.Int16, "Flags", hc.Arguments[3]);
+
+            lbCallInfo.Text = string.Format("{0}!{1} ({2})", hc.Hook.Module, hc.Hook.Function, hc.Hook.Type.ToString());
+            modifiyng = true;
+            while (modifiyng)
+            {
+                System.Threading.Thread.Sleep(1);
+                System.Windows.Forms.Application.DoEvents();
+            }
+            lbCallInfo.Text = string.Empty;
+            editor.Clear();
         }
 
         private void ProcessRecv(HookedCall hc)
         {
-            IntPtr address = new IntPtr((int)hc.Arguments[1]);
-            byte[] modifiedData = InterceptData(internalsMgr.RemoteProcess.ReadMemory(address, (Int16)hc.ReturnedValue), hc);
+            //IntPtr address = new IntPtr((int)hc.Arguments[1]);
+            //byte[] modifiedData = InterceptData(internalsMgr.RemoteProcess.ReadMemory(address, (Int16)hc.ReturnedValue), hc);
         }
 
         void internalsMgr_OnHookedCall(HookedCall hc)

@@ -54,11 +54,24 @@
     <Compile Include="AttachForm.Designer.cs">
       <DependentUpon>AttachForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DataType.cs" />
+    <Compile Include="Controls\Editor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Editor.Designer.cs">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </Compile>
     <Compile Include="ErrorForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ErrorForm.Designer.cs">
       <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HexEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HexEditorForm.Designer.cs">
+      <DependentUpon>HexEditorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -66,16 +79,31 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MiniFormEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiniFormEditor.Designer.cs">
+      <DependentUpon>MiniFormEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AttachForm.resx">
       <DependentUpon>AttachForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Editor.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ErrorForm.resx">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HexEditorForm.resx">
+      <DependentUpon>HexEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiniFormEditor.resx">
+      <DependentUpon>MiniFormEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
