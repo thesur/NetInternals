@@ -11,6 +11,7 @@ namespace Models
     public class Response
     {
         public ResponseType Type { get; set; }
+        [DataMember]
         public string Message { get; set; }
 
         public Response(ResponseType type, string message)

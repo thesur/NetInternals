@@ -33,11 +33,14 @@ namespace ManagedDll
                 InterComClient = new InterCom.Client(this);
                 InterComClient.Connect();
                 InterComClient.Log("PONG! - Process hooked.");
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         /// <summary>

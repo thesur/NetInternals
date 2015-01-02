@@ -59,16 +59,27 @@ namespace GUI
             editor.AddArgument(new Argument(DataType.Int16, "Flags", hc.Arguments[3]));
         }
 
+        private void ProcessReadFile(HookedCall hc)
+        {
+            editor.AddArgument(new Argument(DataType.Int16, "hFile", hc.Arguments[0]));
+            editor.AddArgument(new Argument(DataType.Pointer, "lpBuffer", hc.Arguments[1]));
+            editor.AddArgument(new Argument(DataType.Int16, "nNumberOfBytesToRead", hc.Arguments[2]));
+            editor.AddArgument(new Argument(DataType.Int16, "lpNumberOfBytesRead", hc.Arguments[3]));
+            editor.AddArgument(new Argument(DataType.Int16, "lpOverlapped", hc.Arguments[4]));
+        }
+
         void internalsMgr_OnHookedCall(HookedCall hc)
         {
             if (!intercepting)
                 return;
             editor.Clear();
-
+            
             if (hc.Hook.Function == "send")
                 ProcessSend(hc);
             else if (hc.Hook.Function == "recv")
                 ProcessRecv(hc);
+            else if (hc.Hook.Function == "ReadFile")
+                ProcessReadFile(hc);
 
             lbCallInfo.Text = string.Format("{0}!{1} ({2})", hc.Hook.Module, hc.Hook.Function, hc.Hook.Type.ToString());
             modifiyng = true;
@@ -126,6 +137,12 @@ namespace GUI
             Response r = Program.internalsMgr.Hook(hook);
         }
 
+        private void btHookReadFile_Click(object sender, EventArgs e)
+        {
+            Hook hook = new Hook("Kernel32", "ReadFile", HookType.PostCall);
+            Response r = Program.internalsMgr.Hook(hook);
+        }
+
         private void btForward_Click(object sender, EventArgs e)
         {
             modifiyng = false;
@@ -152,5 +169,7 @@ namespace GUI
         {
             ToggleIntercept();
         }
+
+      
     }
 }

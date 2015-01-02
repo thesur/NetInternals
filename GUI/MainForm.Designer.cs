@@ -41,6 +41,7 @@
             this.btIntercepting = new System.Windows.Forms.Button();
             this.lbCallInfo = new System.Windows.Forms.Label();
             this.tabPageHooks = new System.Windows.Forms.TabPage();
+            this.btHookReadFile = new System.Windows.Forms.Button();
             this.editor = new GUI.Controls.Editor();
             this.menuStrip1.SuspendLayout();
             this.tabPageInterception.SuspendLayout();
@@ -183,15 +184,27 @@
             // 
             // tabPageHooks
             // 
+            this.tabPageHooks.Controls.Add(this.btHookReadFile);
             this.tabPageHooks.Controls.Add(this.button1);
             this.tabPageHooks.Controls.Add(this.button2);
             this.tabPageHooks.Location = new System.Drawing.Point(4, 22);
             this.tabPageHooks.Name = "tabPageHooks";
             this.tabPageHooks.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHooks.Size = new System.Drawing.Size(724, 188);
+            this.tabPageHooks.Size = new System.Drawing.Size(724, 278);
             this.tabPageHooks.TabIndex = 1;
             this.tabPageHooks.Text = "Hooks";
             this.tabPageHooks.UseVisualStyleBackColor = true;
+            // 
+            // btHookReadFile
+            // 
+            this.btHookReadFile.Enabled = false;
+            this.btHookReadFile.Location = new System.Drawing.Point(32, 104);
+            this.btHookReadFile.Name = "btHookReadFile";
+            this.btHookReadFile.Size = new System.Drawing.Size(107, 23);
+            this.btHookReadFile.TabIndex = 4;
+            this.btHookReadFile.Text = "Hook Readfile";
+            this.btHookReadFile.UseVisualStyleBackColor = true;
+            this.btHookReadFile.Click += new System.EventHandler(this.btHookReadFile_Click);
             // 
             // editor
             // 
@@ -243,6 +256,7 @@
         private System.Windows.Forms.Label lbCallInfo;
         private System.Windows.Forms.Button btIntercepting;
         private Controls.Editor editor;
+        private System.Windows.Forms.Button btHookReadFile;
     }
 }
 

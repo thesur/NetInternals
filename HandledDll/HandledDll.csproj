@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIs\Kernel32\ReadFile.cs" />
     <Compile Include="APIs\WS2_32\Recv.cs" />
     <Compile Include="APIs\WS2_32\Send.cs" />
     <Compile Include="HandledDll.cs" />
@@ -62,6 +63,7 @@
       <Name>WinApi</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

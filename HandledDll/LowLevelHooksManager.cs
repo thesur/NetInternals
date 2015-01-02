@@ -26,9 +26,11 @@ namespace HandledDll
                 llHook = new APIs.WS2_32.Send(hook);
             else if (hook.Module == "WS2_32" && hook.Function == "recv")
                 llHook = new APIs.WS2_32.Recv(hook);
+            // ReadFile looks like doesn't work, why? is the pipes using readfile while is being hooked?
+            /*else if (hook.Module == "Kernel32" && hook.Function == "ReadFile")
+                llHook = new APIs.Kernel32.ReadFile(hook);*/
             else
                 return false;
-            
             AddHook(llHook);
 
             return true;
@@ -36,7 +38,10 @@ namespace HandledDll
 
         internal void AddHook(LowLevelHook llHook)
         {
+            ManagedDll.ManagedDll.InterComClient.Log("2");
             this.Hooks.Add(llHook);
+            
+
             llHook.Enable(pHandle);
         }
     }
