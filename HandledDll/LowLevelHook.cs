@@ -48,7 +48,6 @@ namespace HandledDll
             {
                 Array.Copy(BitConverter.GetBytes((uint)Marshal.GetFunctionPointerForDelegate(callBack)), 0, jmpInApi, 1, 4);
                 WinApi.WinApi.WriteProcessMemory(pHandle, pFunction, jmpInApi, jmpInApi.Length, out bytes);
-                ManagedDll.ManagedDll.InterComClient.Log("BBB");
             }
             catch (Exception ex)
             {

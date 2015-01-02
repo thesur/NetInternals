@@ -38,10 +38,7 @@ namespace HandledDll
 
         internal void AddHook(LowLevelHook llHook)
         {
-            ManagedDll.ManagedDll.InterComClient.Log("2");
             this.Hooks.Add(llHook);
-            
-
             llHook.Enable(pHandle);
         }
     }
