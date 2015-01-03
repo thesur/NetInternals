@@ -97,5 +97,11 @@ namespace WinApi
 
         [DllImport("kernel32.dll")]
         public static extern bool CloseHandle(IntPtr hObject);
+
+        [DllImport("kernel32.dll")]
+        public static extern bool VirtualProtect(IntPtr lpAddress, uint dwSize, MemoryProtection flNewProtect, out IntPtr lpflOldProtect);
+
+
+
     }
 }

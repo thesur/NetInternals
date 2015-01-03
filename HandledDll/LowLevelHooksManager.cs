@@ -22,24 +22,45 @@ namespace HandledDll
         {
             LowLevelHook llHook;
 
-            if (hook.Module == "WS2_32" && hook.Function == "send")
-                llHook = new APIs.WS2_32.Send(hook);
-            else if (hook.Module == "WS2_32" && hook.Function == "recv")
-                llHook = new APIs.WS2_32.Recv(hook);
-            // ReadFile looks like doesn't work, why? is the pipes using readfile while is being hooked?
-            /*else if (hook.Module == "Kernel32" && hook.Function == "ReadFile")
-                llHook = new APIs.Kernel32.ReadFile(hook);*/
-            else
+            try
+            {
+                if (hook.Module == "WS2_32" && hook.Function == "send")
+                    llHook = new APIs.WS2_32.Send(hook);
+                else if (hook.Module == "WS2_32" && hook.Function == "recv")
+                    llHook = new APIs.WS2_32.Recv(hook);
+                
+                /*  =============================================================================
+                //  Problematic API's, due that this functions are called by the WCF (Windows
+                //  Communication Foundation) for the interprocess communication, so when this 
+                //  API's are hooked, the communication is lost. There is any easy way to solve
+                //  this issue?                                                                  
+                // ============================================================================= */
+                // This function (Secur32!EncryptMessage) works because I've dissable the authentication
+                // in the security transport layer in the binding (WCF). So now this API isn't called
+                // by WCF during the intercomunication between process.
+                else if (hook.Module == "Secur32" && hook.Function == "EncryptMessage")
+                    llHook = new APIs.Secur32.EncryptMessage(hook);
+                // No idea yet how to fix the issue with ReadFile... Is called by WCF to send data
+                // through pipes.
+                //else if (hook.Module == "Kernel32" && hook.Function == "ReadFile")
+                //    llHook = new APIs.Kernel32.ReadFile(hook);
+                else
+                    return false;
+            }
+            catch
+            {
                 return false;
-            AddHook(llHook);
+            }
 
-            return true;
+            return AddHook(llHook);
         }
 
-        internal void AddHook(LowLevelHook llHook)
+        internal bool AddHook(LowLevelHook llHook)
         {
+
             this.Hooks.Add(llHook);
-            llHook.Enable(pHandle);
+            return llHook.Enable(pHandle);
+
         }
     }
 }

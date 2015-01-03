@@ -21,8 +21,15 @@ namespace HandledDll
         {
             this.Hook = hook;
             this.PrologueBytesToCopy = prologueLength;
+
             pModule = WinApi.WinApi.GetModuleHandle(hook.Module);
+            if (pModule == IntPtr.Zero)
+                throw new Exception("Module not found in the process");
+
             pFunction = WinApi.WinApi.GetProcAddress(pModule, hook.Function);
+            if (pFunction == IntPtr.Zero)
+                throw new Exception("Function not found in the process");
+            
         }
 
         /// <summary>
@@ -35,6 +42,9 @@ namespace HandledDll
             IntPtr bytes = IntPtr.Zero;
 
             jmp = ClonePrologue(pHandle, pFunction, PrologueBytesToCopy); // bytesToCopy are the number of bytes of the prologue of the function to copy
+
+            if (jmp == IntPtr.Zero)
+                return IntPtr.Zero;
 
             // To do:
             // Calculate the opcodes of the prolog of the API, so we make sure that
@@ -73,6 +83,9 @@ namespace HandledDll
             byte[] jmp = new byte[] { 0xe9, 0x00, 0x00, 0x00, 0x00 }; // JMP addr
             IntPtr pos = WinApi.WinApi.VirtualAllocEx(processHandle, IntPtr.Zero, 20, WinApi.WinApi.AllocationType.Commit | WinApi.WinApi.AllocationType.Reserve, WinApi.WinApi.MemoryProtection.ReadWrite);
 
+            if (pos == IntPtr.Zero)
+                return IntPtr.Zero;
+
             uint whereToJump = 0;
             //if ((int)pos < (int)pFunction)
             //    whereToJump = (uint)pFunction + nBytes - (uint)pos - 15 + 2;
@@ -82,10 +95,15 @@ namespace HandledDll
             Array.Copy(BitConverter.GetBytes(whereToJump), 0, jmp, 1, 4);
             Array.Copy(jmp, 0, asm, nBytes, jmp.Length);
 
+
+            // Gives writting permisions. Is this necesary???? in case it is, permisions should be restabilized
+            IntPtr foolAddress = WinApi.WinApi.VirtualAllocEx(processHandle, IntPtr.Zero, 50, WinApi.WinApi.AllocationType.Commit | WinApi.WinApi.AllocationType.Reserve, WinApi.WinApi.MemoryProtection.ReadWrite);
+            bool r = WinApi.WinApi.VirtualProtect(pos, (uint) asm.Length, WinApi.WinApi.MemoryProtection.ReadWrite, out foolAddress);
+
             WinApi.WinApi.WriteProcessMemory(processHandle, pos, asm, asm.Length, out bytesRead);
             return pos;
         }
 
-        internal abstract void Enable(IntPtr pHandle);
+        internal abstract bool Enable(IntPtr pHandle);
     }
 }

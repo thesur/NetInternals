@@ -33,8 +33,6 @@ namespace ManagedDll
                 InterComClient = new InterCom.Client(this);
                 InterComClient.Connect();
                 InterComClient.Log("PONG! - Process hooked.");
-
-
             }
             catch (Exception ex)
             {
@@ -50,6 +48,8 @@ namespace ManagedDll
         /// <returns></returns>
         public Response Hook(Hook hook)
         {
+            
+
             if (LowLevelHooksManager.AddHook(hook))
             {
                 InterComClient.Log("Hooking " + string.Concat(hook.Module, "!", hook.Function, " (", hook.Type.ToString(), ")"));

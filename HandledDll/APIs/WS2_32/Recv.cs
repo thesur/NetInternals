@@ -20,10 +20,11 @@ namespace HandledDll.APIs.WS2_32
 
         }
         
-        internal override void Enable(IntPtr pHandle)
+        internal override bool Enable(IntPtr pHandle)
         {
             CallDelegate c = new CallDelegate(HookCall);
             pJmp = base.Enable(pHandle, c);
+            return (pJmp != IntPtr.Zero);
         }
 
         internal Int16 HookCall(UInt16 socket, IntPtr pBuffer, Int16 len, Int16 flags)

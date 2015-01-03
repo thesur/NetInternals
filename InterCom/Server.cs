@@ -18,8 +18,8 @@ namespace InterCom
         public Server(IFromClientToServer clientToServer)
         {
             serverHost = new ServiceHost(clientToServer);
-            serverHost.AddServiceEndpoint((typeof(IFromClientToServer)), new NetNamedPipeBinding(), base.PipeServerName);
-            factory = new ChannelFactory<IFromServerToClient>(new NetNamedPipeBinding(), new EndpointAddress(base.PipeClientName));
+            serverHost.AddServiceEndpoint((typeof(IFromClientToServer)), new NetNamedPipeBinding( NetNamedPipeSecurityMode.None), base.PipeServerName);
+            factory = new ChannelFactory<IFromServerToClient>(new NetNamedPipeBinding(NetNamedPipeSecurityMode.None), new EndpointAddress(base.PipeClientName));
             channel = factory.CreateChannel();
         }
 

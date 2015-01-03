@@ -20,10 +20,12 @@ namespace HandledDll.APIs.Kernel32
 
         }
         
-        internal override void Enable(IntPtr pHandle)
+        internal override bool Enable(IntPtr pHandle)
         {
             CallDelegate c = new CallDelegate(HookCall);
             pJmp = base.Enable(pHandle, c);
+            return (pJmp != IntPtr.Zero);
+                
         }
 
         internal bool HookCall(IntPtr hFile, IntPtr lpBuffer, IntPtr nNumberOfBytesToRead, IntPtr lpNumberOfBytesRead, IntPtr lpOverlapped)

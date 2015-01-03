@@ -42,6 +42,7 @@
             this.lbCallInfo = new System.Windows.Forms.Label();
             this.tabPageHooks = new System.Windows.Forms.TabPage();
             this.btHookReadFile = new System.Windows.Forms.Button();
+            this.btEncryptMessage = new System.Windows.Forms.Button();
             this.editor = new GUI.Controls.Editor();
             this.menuStrip1.SuspendLayout();
             this.tabPageInterception.SuspendLayout();
@@ -184,6 +185,7 @@
             // 
             // tabPageHooks
             // 
+            this.tabPageHooks.Controls.Add(this.btEncryptMessage);
             this.tabPageHooks.Controls.Add(this.btHookReadFile);
             this.tabPageHooks.Controls.Add(this.button1);
             this.tabPageHooks.Controls.Add(this.button2);
@@ -197,7 +199,6 @@
             // 
             // btHookReadFile
             // 
-            this.btHookReadFile.Enabled = false;
             this.btHookReadFile.Location = new System.Drawing.Point(32, 104);
             this.btHookReadFile.Name = "btHookReadFile";
             this.btHookReadFile.Size = new System.Drawing.Size(107, 23);
@@ -205,6 +206,16 @@
             this.btHookReadFile.Text = "Hook Readfile";
             this.btHookReadFile.UseVisualStyleBackColor = true;
             this.btHookReadFile.Click += new System.EventHandler(this.btHookReadFile_Click);
+            // 
+            // btEncryptMessage
+            // 
+            this.btEncryptMessage.Location = new System.Drawing.Point(32, 143);
+            this.btEncryptMessage.Name = "btEncryptMessage";
+            this.btEncryptMessage.Size = new System.Drawing.Size(107, 20);
+            this.btEncryptMessage.TabIndex = 5;
+            this.btEncryptMessage.Text = "EncryptMessage";
+            this.btEncryptMessage.UseVisualStyleBackColor = true;
+            this.btEncryptMessage.Click += new System.EventHandler(this.btEncryptMessage_Click);
             // 
             // editor
             // 
@@ -257,6 +268,7 @@
         private System.Windows.Forms.Button btIntercepting;
         private Controls.Editor editor;
         private System.Windows.Forms.Button btHookReadFile;
+        private System.Windows.Forms.Button btEncryptMessage;
     }
 }
 

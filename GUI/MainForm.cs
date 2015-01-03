@@ -80,6 +80,13 @@ namespace GUI
                 ProcessRecv(hc);
             else if (hc.Hook.Function == "ReadFile")
                 ProcessReadFile(hc);
+            else if (hc.Hook.Function == "EncryptMessage")
+                ProcessReadFile(hc);
+            else
+            {
+                AddLocalLog(string.Concat("Error, not handled hook: ", hc.Hook.Module, "!", hc.Hook.Function));
+                return;
+            }
 
             lbCallInfo.Text = string.Format("{0}!{1} ({2})", hc.Hook.Module, hc.Hook.Function, hc.Hook.Type.ToString());
             modifiyng = true;
@@ -143,6 +150,12 @@ namespace GUI
             Response r = Program.internalsMgr.Hook(hook);
         }
 
+        private void btEncryptMessage_Click(object sender, EventArgs e)
+        {
+            Hook hook = new Hook("Secur32", "EncryptMessage", HookType.PreCall);
+            Response r = Program.internalsMgr.Hook(hook);
+        }
+
         private void btForward_Click(object sender, EventArgs e)
         {
             modifiyng = false;
@@ -169,6 +182,7 @@ namespace GUI
         {
             ToggleIntercept();
         }
+
 
       
     }
